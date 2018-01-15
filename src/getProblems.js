@@ -1,5 +1,10 @@
 import { npmLoad, npmList } from './npmManager';
 
-const getProblems = () => (npmLoad().then(() => npmList()));
+const getProblems = (directory = null) => {
+  if (directory) {
+    process.chdir(directory);
+  }
+  return npmLoad().then(() => npmList());
+};
 
 export default getProblems;
