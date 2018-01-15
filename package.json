@@ -1,0 +1,53 @@
+{
+  "name": "npm-list-problems",
+  "version": "0.0.0-development",
+  "description": "List NPM Problems",
+  "main": "./build/index.js",
+  "scripts": {
+    "codecov": "codecov",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "compile": "babel -d build/ src/ --ignore node_modules,*.test.js",
+    "lint": "eslint --ext .js .",
+    "test": "jest --coverage",
+    "prepublishOnly": "npm run compile",
+    "semantic-commit": "commit",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaebradley/npm-list-problems.git"
+  },
+  "keywords": [
+    "npm",
+    "npm list",
+    "dependencies",
+    "package.json"
+  ],
+  "author": "jae.b.bradley@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaebradley/npm-list-problems/issues"
+  },
+  "homepage": "https://github.com/jaebradley/npm-list-problems#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "@commitlint/config-angular": "^6.0.2",
+    "@commitlint/prompt": "^6.0.2",
+    "@commitlint/prompt-cli": "^6.0.2",
+    "ajv": "^5.5.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "codecov": "^3.0.0",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "husky": "^0.14.3",
+    "jest": "^22.0.6",
+    "semantic-release": "^12.2.2"
+  },
+  "dependencies": {
+    "global-npm": "^0.3.0"
+  }
+}
