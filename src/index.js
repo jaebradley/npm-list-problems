@@ -1,5 +1,7 @@
 import getProblems from './getProblems';
+import errorTypes from './errorTypes';
 
 export {
-  getProblems, // eslint-disable-line import/prefer-default-export
+  getProblems,
+  errorTypes,
 };

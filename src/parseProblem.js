@@ -1,3 +1,7 @@
+// These error message formats are defined in ls.js
+// https://github.com/npm/npm/blob/latest/lib/ls.js#L175-L269
+
+import errorTypes from './errorTypes';
 import {
   extraneousDependencyExpression,
   missingDependencyExpression,
@@ -14,7 +18,7 @@ const parseProblem = (problem) => {
       package: match[1],
       version: match[2],
       path: match[3],
-      error: 'EXTRANEOUS_DEPENDENCY',
+      type: errorTypes.extraneousDependency,
     };
   }
 
@@ -27,7 +31,7 @@ const parseProblem = (problem) => {
         package: match[3],
         version: match[4],
       },
-      error: 'MISSING_DEPENDENCY',
+      type: errorTypes.missingDependency,
     };
   }
 
@@ -40,7 +44,7 @@ const parseProblem = (problem) => {
         package: match[3],
         version: match[4],
       },
-      error: 'MISSING_PEER_DEPENDENCY',
+      type: errorTypes.missingPeerDependency,
     };
   }
 
@@ -50,7 +54,7 @@ const parseProblem = (problem) => {
       package: match[1],
       version: match[2],
       path: match[3],
-      error: 'UNMET_PEER_DEPENDENCY',
+      type: errorTypes.unmetPeerDependency,
     };
   }
 
@@ -60,7 +64,7 @@ const parseProblem = (problem) => {
       package: match[1],
       version: match[2],
       path: match[3],
-      error: 'INVALID_DEPENDENCY',
+      type: errorTypes.invalidDependency,
     };
   }
 
@@ -69,11 +73,11 @@ const parseProblem = (problem) => {
     return {
       path: match[1],
       message: match[2],
-      error: 'DEPENDENCY_ERROR',
+      type: errorTypes.dependencyError,
     };
   }
 
-  throw new Error(`Unable to parse error: ${problem}`);
+  throw new Error(`Unable to parse problem: ${problem}`);
 };
 
 export default parseProblem;
