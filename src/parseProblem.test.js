@@ -1,3 +1,4 @@
+import errorTypes from './errorTypes';
 import parseProblem from './parseProblem';
 
 describe('parseProblem', () => {
@@ -12,7 +13,7 @@ describe('parseProblem', () => {
       version,
       path,
       package: packageName,
-      error: 'EXTRANEOUS_DEPENDENCY',
+      type: errorTypes.extraneousDependency,
     };
     expect(parseProblem(problem)).toEqual(expected);
   });
@@ -26,7 +27,7 @@ describe('parseProblem', () => {
         version,
         package: packageName,
       },
-      error: 'MISSING_DEPENDENCY',
+      type: errorTypes.missingDependency,
     };
     expect(parseProblem(problem)).toEqual(expected);
   });
@@ -40,7 +41,7 @@ describe('parseProblem', () => {
         version,
         package: packageName,
       },
-      error: 'MISSING_PEER_DEPENDENCY',
+      type: errorTypes.missingPeerDependency,
     };
     expect(parseProblem(problem)).toEqual(expected);
   });
@@ -51,7 +52,7 @@ describe('parseProblem', () => {
       version,
       package: packageName,
       path,
-      error: 'UNMET_PEER_DEPENDENCY',
+      type: errorTypes.unmetPeerDependency,
     };
     expect(parseProblem(problem)).toEqual(expected);
   });
@@ -62,7 +63,7 @@ describe('parseProblem', () => {
       version,
       path,
       package: packageName,
-      error: 'INVALID_DEPENDENCY',
+      type: errorTypes.invalidDependency,
     };
     expect(parseProblem(problem)).toEqual(expected);
   });
@@ -72,7 +73,7 @@ describe('parseProblem', () => {
     const expected = {
       path,
       message,
-      error: 'DEPENDENCY_ERROR',
+      type: errorTypes.dependencyError,
     };
     expect(parseProblem(problem)).toEqual(expected);
   });
